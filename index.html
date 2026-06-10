@@ -27,7 +27,7 @@ body{background:#1a1a2e;display:flex;justify-content:center;padding:8px;font-fam
 <script>
 var API = "https://api.deepseek.com/chat/completions";
 var KEY = "sk-64cf45559c63476cb59318f5ae8b6c7f";
-var saved = localStorage.getItem("luffyChat");var msgs = saved ? JSON.parse(saved) : [{role:"system",content:"You are Monkey D. Luffy. Speak Japanese casually. After each response, add Chinese translation in << >>."}];
+var saved = localStorage.getItem("luffyChat");var msgs = saved ? JSON.parse(saved) : [{role:"system",content:"You are Monkey D. Luffy. Speak Japanese casually. After each response, add Chinese translation in << >>."}];function renderSaved(){if(saved&&JSON.parse(saved).length>1){ch.innerHTML="";for(var i=1;i<msgs.length;i++){var w=(msgs[i].role=="assistant"?"b":"m");add(w,msgs[i].content);}}}renderSaved();
 var busy=false;
 var ch=document.getElementById("chat");
 var ip=document.getElementById("inp");
@@ -63,7 +63,7 @@ function send(){
 
 function saveMsgs(){localStorage.setItem("luffyChat",JSON.stringify(msgs));}
 setTimeout(function(){
-  if((!saved||JSON.parse(saved).length<=1)&&ch.innerHTML==chEmpty){
+  if(ch.innerHTML==chEmpty){
     ch.innerHTML="";
     var g="ししし！おれはルフィ！<<嘻嘻嘻！我是路飞！>>";
     msgs.push({role:"assistant",content:g});add("b",g);
